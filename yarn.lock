@@ -737,6 +737,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.19.1":
+  version: 1.19.1
+  resolution: "@remix-run/router@npm:1.19.1"
+  checksum: ebe4474ba0c1046093976b48a4eb4e39bd2f47368aacea21400126d72e133d2cfbfb50254cf1bde0b66dacdf0344452f743049d1595a22e86130668f60112376
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.0.5":
   version: 5.1.0
   resolution: "@rollup/pluginutils@npm:5.1.0"
@@ -968,6 +975,24 @@ __metadata:
   peerDependencies:
     "@svgr/core": "*"
   checksum: 0418a9780753d3544912ee2dad5d2cf8d12e1ba74df8053651b3886aeda54d5f0f7d2dece0af5e0d838332c4f139a57f0dabaa3ca1afa4d1a765efce6a7656f2
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.52.0":
+  version: 5.52.0
+  resolution: "@tanstack/query-core@npm:5.52.0"
+  checksum: 1e142995fa9b0eec88009dd1083cd226eaec9125dc668b6485699639f45edb1386e4acd634e0eddc33d3a29e0c9636302824c42ac8c4106935d776fdc41d2638
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.52.1":
+  version: 5.52.1
+  resolution: "@tanstack/react-query@npm:5.52.1"
+  dependencies:
+    "@tanstack/query-core": 5.52.0
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: f46bf1f85cc03b8329aee5d8a5a96b4e30dc88aff04d5256ebd0efefe1f507720b42a4be4a9bee340d3ade6cf0ae7b59187de90d87ea973c0f67e3764f76260c
   languageName: node
   linkType: hard
 
@@ -4088,6 +4113,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.26.1":
+  version: 6.26.1
+  resolution: "react-router-dom@npm:6.26.1"
+  dependencies:
+    "@remix-run/router": 1.19.1
+    react-router: 6.26.1
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: e393ab62e3239585d44d598e6bc8cc138ac8353f3dc46262680c6ad83dea35773662ada2f1c353921a05c37d1f369c0a2cb097848a6210689e9b6076550c7de0
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.26.1":
+  version: 6.26.1
+  resolution: "react-router@npm:6.26.1"
+  dependencies:
+    "@remix-run/router": 1.19.1
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 810949febc1bf2a6f8dd65f4c0532a2413d0532df462b3e78891aec81dca5a088d387b32c9922cde52bd9770f32263590993cab2383c94ddc1cdb50a20fd7adc
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -4329,6 +4378,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sample-front@workspace:."
   dependencies:
+    "@tanstack/react-query": ^5.52.1
     "@types/eslint": ^8.56.2
     "@types/node": ^20.11.5
     "@types/react": ^18.2.48
@@ -4348,6 +4398,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-i18next: ^14.0.0
+    react-router-dom: ^6.26.1
     styled-components: ^6.1.8
     typescript: ^5.3.3
     vite: ^5.0.11
