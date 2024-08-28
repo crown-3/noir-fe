@@ -43,3 +43,59 @@ const colorStyles = {
     white_dark: "#000000",
   },
 };
+
+const lightTheme = {
+  colors: {
+    red: colorStyles.colors.red,
+    blue: colorStyles.colors.blue,
+  },
+  labels: {
+    primary: colorStyles.labels.primary,
+    secondary: colorStyles.labels.secondary,
+    tertiary: colorStyles.labels.tertiary,
+    quaternary: colorStyles.labels.quaternary,
+  },
+  fills: {
+    primary: colorStyles.fills.primary,
+    secondary: colorStyles.fills.secondary,
+    tertiary: colorStyles.fills.tertiary,
+    quaternary: colorStyles.fills.quaternary,
+  },
+  bg: {
+    primary: colorStyles.bg.primary,
+    secondary: colorStyles.bg.secondary,
+    tertiary: colorStyles.bg.tertiary,
+  },
+  grays: {
+    black: colorStyles.grays.black,
+    white: colorStyles.grays.white,
+  },
+};
+
+const darkTheme = {
+  colors: {
+    red: colorStyles.colors.red_dark,
+    blue: colorStyles.colors.blue_dark,
+  },
+  labels: {
+    primary: colorStyles.labels.primary_dark,
+    secondary: colorStyles.labels.secondary_dark,
+    tertiary: colorStyles.labels.tertiary_dark,
+    quaternary: colorStyles.labels.quaternary_dark,
+  },
+  fills: {
+    primary: colorStyles.fills.primary_dark,
+    secondary: colorStyles.fills.secondary_dark,
+    tertiary: colorStyles.fills.tertiary_dark,
+    quaternary: colorStyles.fills.quaternary_dark,
+  },
+  bg: {
+    primary: colorStyles.bg.primary_dark_base,
+    secondary: colorStyles.bg.primary_dark_elevated,
+    tertiary: colorStyles.bg.tertiary_dark_base,
+  },
+  grays: {
+    black: colorStyles.grays.black_dark,
+    white: colorStyles.grays.white_dark,
+  },
+};
