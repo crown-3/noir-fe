@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import GlobalStyle from "src/constants/globalStyle";
+import GlobalStyle from "src/constants/GlobalStyle";
 import useDarkMode from "src/hooks/useDarkMode";
 import styled from "styled-components";
 

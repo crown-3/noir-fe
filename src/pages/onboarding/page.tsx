@@ -11,7 +11,7 @@ const OnBoardingPage = () => {
   return (
     <>
       <Area style={{ height: "100%" }}>
-        <Content $isCenter>
+        <Content $isCenter $isNarrow>
           <Title>Welcome to Noir.</Title>
 
           <Spacer height="25px" />

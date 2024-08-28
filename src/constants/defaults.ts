@@ -3,6 +3,7 @@ export const MOBILE_BREAKPOINT = "768px";
 
 export const DESKTOP_PAGESIDEGAP = "100px";
 export const MOBILE_PAGESIDEGAP = "16px";
+export const MOBILE_PAGESIDEGAP_2 = "24px";
 
 export const CONTENT_AREA_DESKTOP = `calc(100% - 2 * ${DESKTOP_PAGESIDEGAP})`;
 export const CONTENT_AREA_MOBILE = `calc(100% - 2 * ${MOBILE_PAGESIDEGAP})`;

@@ -1,13 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    color: ${(p) => p.theme.labels.primary};
-
     // large title
     h1 {
         font-size: 34px;
         letter-spacing: 0.4px;
         line-height: 41px;
+        margin: 0;
     }
 
     // title 1
@@ -15,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 28px;
         letter-spacing: 0.38px;
         line-height: 34px;
+        margin: 0;
     }
 
     // title 2
@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 22px;
         letter-spacing: -0.26px;
         line-height: 28px;
+        margin: 0;
     }
 
     // title 3
@@ -29,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 20px;
         letter-spacing: -0.45px;
         line-height: 25px;
+        margin: 0;
     }
 
     // headline
@@ -37,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 17px;
         letter-spacing: -0.43px;
         line-height: 22px;
+        margin: 0;
     }
     
     // body
@@ -44,6 +47,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 17px;
         letter-spacing: -0.43px;
         line-height: 22px;
+        margin: 0;
     }
 
     // caption1
@@ -52,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 12px;
         letter-spacing: 0;
         line-height: 16px;
+        margin: 0;
     }
 
     // caption2
@@ -60,6 +65,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 11px;
         letter-spacing: 0.06px;
         line-height: 13px;
+        margin: 0;
     }
 `;
 

@@ -1,14 +1,18 @@
-import { MOBILE_PAGESIDEGAP } from "src/constants/defaults";
+import {
+  MOBILE_PAGESIDEGAP,
+  MOBILE_PAGESIDEGAP_2,
+} from "src/constants/defaults";
 import styled, { css } from "styled-components";
 
 export interface ContentAreaProps {
   width?: React.CSSProperties["width"];
   $isCenter?: boolean;
+  $isNarrow?: boolean;
 }
 
 const Content = styled.div<ContentAreaProps>`
-  margin: 0 auto;
-  padding: 0 ${MOBILE_PAGESIDEGAP};
+  width: 100%;
+  padding: 0 ${(p) => (p.$isNarrow ? MOBILE_PAGESIDEGAP_2 : MOBILE_PAGESIDEGAP)};
 
   ${({ $isCenter }) =>
     $isCenter &&
