@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import useDarkMode, { DarkModeProvider } from "src/hooks/useDarkMode";
+import useDarkMode from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
 import ThemeProvider from "./ThemeProvider";
@@ -30,12 +30,12 @@ const MobileSizedView = styled.div`
     height: 100vh;
   }
 
-  background-color: #dee7ec;
+  background-color: ${(p) => p.theme.bg.secondary};
 `;
 
 const Screen = styled.div`
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${(p) => p.theme.bg.primary};
   height: 100vh;
   overflow-y: scroll;
 

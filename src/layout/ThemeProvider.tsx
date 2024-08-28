@@ -1,5 +1,6 @@
 import React from "react";
 import { darkTheme, lightTheme } from "src/constants/colors";
+import { DefaultTheme } from "styled-components";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 interface ThemeProviderProps {
@@ -8,7 +9,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children, isDarkMode }: ThemeProviderProps) => {
-  const theme = isDarkMode ? darkTheme : lightTheme;
+  const theme: DefaultTheme = isDarkMode ? darkTheme : lightTheme;
   return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
 };
 

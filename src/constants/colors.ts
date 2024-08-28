@@ -99,3 +99,5 @@ export const darkTheme = {
     white: colorStyles.grays.white_dark,
   },
 };
+
+export type ColorTypes = typeof darkTheme;
