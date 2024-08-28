@@ -42,6 +42,12 @@ export const colorStyles = {
     white: "#FFFFFF",
     white_dark: "#FFFFFF",
   },
+  separators: {
+    opaque: "#C6C6C8",
+    opaque_dark: "#38383A",
+    non_opaque: "#3C3C435C",
+    non_opaque_dark: "#545458A6",
+  },
 };
 
 export const lightTheme = {
@@ -70,6 +76,10 @@ export const lightTheme = {
     black: colorStyles.grays.black,
     white: colorStyles.grays.white,
   },
+  separators: {
+    opaque: colorStyles.separators.opaque,
+    non_opaque: colorStyles.separators.non_opaque,
+  },
 };
 
 export const darkTheme = {
@@ -97,6 +107,10 @@ export const darkTheme = {
   grays: {
     black: colorStyles.grays.black_dark,
     white: colorStyles.grays.white_dark,
+  },
+  separators: {
+    opaque: colorStyles.separators.opaque_dark,
+    non_opaque: colorStyles.separators.non_opaque_dark,
   },
 };
 
