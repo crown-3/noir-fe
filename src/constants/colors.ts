@@ -40,7 +40,7 @@ export const colorStyles = {
     black: "#000000",
     black_dark: "#000000",
     white: "#FFFFFF",
-    white_dark: "#000000",
+    white_dark: "#FFFFFF",
   },
 };
 

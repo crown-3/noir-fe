@@ -53,4 +53,8 @@ export const DarkModeProvider = ({ children }: React.PropsWithChildren) => {
   );
 };
 
+export interface PropsWithDarkMode {
+  $isDarkMode: boolean;
+}
+
 export default useDarkMode;

@@ -1,8 +1,4 @@
-import {
-  CONTENT_AREA_DESKTOP,
-  CONTENT_AREA_MOBILE,
-  MOBILE_BREAKPOINT,
-} from "src/constants/defaults";
+import { MOBILE_PAGESIDEGAP } from "src/constants/defaults";
 import styled, { css } from "styled-components";
 
 export interface ContentAreaProps {
@@ -12,12 +8,7 @@ export interface ContentAreaProps {
 
 const Content = styled.div<ContentAreaProps>`
   margin: 0 auto;
-  width: ${({ width }) => (width ? width : CONTENT_AREA_DESKTOP)};
-  max-width: ${({ width }) => width || "1300px"};
-
-  @media (max-width: ${MOBILE_BREAKPOINT}) {
-    width: ${({ width }) => (width ? width : CONTENT_AREA_MOBILE)};
-  }
+  padding: 0 ${MOBILE_PAGESIDEGAP};
 
   ${({ $isCenter }) =>
     $isCenter &&
