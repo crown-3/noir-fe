@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import LocalstorageKeys from "src/constants/\blocalstorageKeys";
+import LocalstorageKeys from "src/constants/localstorageKeys";
 
 interface DarkModeContext {
   isDarkMode: boolean;

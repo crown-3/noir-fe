@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import GlobalStyle from "src/constants/globalStyle";
 import useDarkMode from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
@@ -10,6 +11,7 @@ const Layout = () => {
   return (
     <>
       <ThemeProvider isDarkMode={isDarkMode}>
+        <GlobalStyle />
         <MobileSizedView>
           <Screen>
             <Outlet />
