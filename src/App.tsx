@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import { DarkModeProvider } from "./hooks/useDarkMode";
 import Layout from "./layout/Layout";
 import HomePage from "./pages/home/page";
 
@@ -28,7 +29,9 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <DarkModeProvider>
+          <RouterProvider router={router} />
+        </DarkModeProvider>
       </QueryClientProvider>
     </>
   );

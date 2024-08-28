@@ -1,14 +1,21 @@
 import { Outlet } from "react-router-dom";
+import useDarkMode, { DarkModeProvider } from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
+import ThemeProvider from "./ThemeProvider";
+
 const Layout = () => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <>
-      <MobileSizedView>
-        <Screen>
-          <Outlet />
-        </Screen>
-      </MobileSizedView>
+      <ThemeProvider isDarkMode={isDarkMode}>
+        <MobileSizedView>
+          <Screen>
+            <Outlet />
+          </Screen>
+        </MobileSizedView>
+      </ThemeProvider>
     </>
   );
 };
