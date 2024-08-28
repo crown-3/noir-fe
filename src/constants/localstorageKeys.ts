@@ -1,0 +1,3 @@
+enum LocalstorageKeys {
+  DarkMode = "darkMode",
+}

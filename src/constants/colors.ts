@@ -1,4 +1,4 @@
-const colorStyles = {
+export const colorStyles = {
   colors: {
     red: "#FF3B30",
     red_dark: "#FF453A",
@@ -44,7 +44,7 @@ const colorStyles = {
   },
 };
 
-const lightTheme = {
+export const lightTheme = {
   colors: {
     red: colorStyles.colors.red,
     blue: colorStyles.colors.blue,
@@ -72,7 +72,7 @@ const lightTheme = {
   },
 };
 
-const darkTheme = {
+export const darkTheme = {
   colors: {
     red: colorStyles.colors.red_dark,
     blue: colorStyles.colors.blue_dark,
