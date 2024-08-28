@@ -2,6 +2,7 @@ import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
 import CTAButton from "src/components/ctaButton/CTAButton";
+import LinkButton from "src/components/linkButton/LinkButton";
 import useDarkMode from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
@@ -17,6 +18,10 @@ const OnBoardingPage = () => {
           <Spacer height="25px" />
 
           <CTAButton $isDarkMode={isDarkMode}>Sign up</CTAButton>
+
+          <Spacer height="15px" />
+
+          <LinkButton>Already have account</LinkButton>
         </Content>
       </Area>
     </>
