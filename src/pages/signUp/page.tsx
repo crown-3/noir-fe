@@ -85,7 +85,9 @@ const SignUpPage = () => {
 
         <Content $isNarrow $isCenter>
           <Spacer height="24px" />
-          <CTAButton $isDarkMode={isDarkMode}>Sign up</CTAButton>
+          <CTAButton type="submit" $isDarkMode={isDarkMode}>
+            Sign up
+          </CTAButton>
           <Spacer height="15px" />
           <LinkButton>Already have account</LinkButton>
         </Content>
