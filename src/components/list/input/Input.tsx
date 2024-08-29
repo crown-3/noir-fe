@@ -7,36 +7,51 @@ interface StyledInputProps {
   $position: ListItemPositionType;
 }
 
-interface InputProps extends React.ComponentProps<"input">, StyledInputProps {}
+interface IsGroupedProps {
+  $isGrouped?: boolean;
+}
 
-const Input = forwardRef(
+interface InputProps
+  extends React.ComponentProps<"input">,
+    StyledInputProps,
+    IsGroupedProps {}
+
+const ListInput = forwardRef(
   (
-    { $position, ...rest }: InputProps,
+    { $position, $isGrouped = true, ...rest }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement> | undefined,
   ) => {
     return (
-      <Wrapper $position={$position}>
-        <StyledInput $position={$position} ref={ref} {...rest} />
-      </Wrapper>
+      <GroupedWrapper $isGrouped={$isGrouped}>
+        <Wrapper $position={$position}>
+          <StyledInput $position={$position} ref={ref} {...rest} />
+        </Wrapper>
+      </GroupedWrapper>
     );
   },
 );
+
+const GroupedWrapper = styled.div<IsGroupedProps>`
+  width: 100%;
+  padding: ${(p) => p.$isGrouped && "0 16px"};
+`;
 
 const Wrapper = styled.div<StyledInputProps>`
   width: 100%;
   display: flex;
   padding-left: 16px;
   overflow: hidden;
+  background-color: ${(p) => p.theme.bg.secondary};
 
   ${({ $position }) => {
     switch ($position) {
       case "first":
         return css`
-          border-radius: 10px 0 0 10px;
+          border-radius: 10px 10px 0 0;
         `;
       case "last":
         return css`
-          border-radius: 0 10px 10px 0;
+          border-radius: 0 0 10px 10px;
         `;
       case "middle":
         return css`
@@ -57,8 +72,7 @@ const StyledInput = styled.input<StyledInputProps>`
 
   padding: 11px 16px 11px 0;
 
-  border-radius: 10px;
-  background-color: ${(p) => p.theme.bg.primary};
+  background-color: ${(p) => p.theme.bg.secondary};
 
   ${({ $position, ...p }) => {
     switch ($position) {
@@ -69,6 +83,13 @@ const StyledInput = styled.input<StyledInputProps>`
         `;
     }
   }}
+
+  ::placeholder {
+    color: ${(p) => p.theme.labels.tertiary};
+  }
+  color: ${(p) => p.theme.labels.primary};
 `;
 
-Input.displayName = "Input";
+ListInput.displayName = "Input";
+
+export default ListInput;

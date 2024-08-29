@@ -1,4 +1,4 @@
-import { PropsWithDarkMode } from "src/hooks/useDarkMode";
+import useDarkMode, { PropsWithDarkMode } from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
 const CTAButton = styled.button<{ disabled?: boolean } & PropsWithDarkMode>`
