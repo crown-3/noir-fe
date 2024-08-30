@@ -48,6 +48,12 @@ export const colorStyles = {
     non_opaque: "#3C3C435C",
     non_opaque_dark: "#545458A6",
   },
+  materials: {
+    regular:
+      "linear-gradient(0deg, #383838 0%, #383838 100%), rgba(179, 179, 179, 0.82)",
+    regular_dark:
+      "linear-gradient(0deg, #8C8C8C 0%, #8C8C8C 100%), rgba(37, 37, 37, 0.82)",
+  },
 };
 
 export const lightTheme = {
@@ -80,6 +86,9 @@ export const lightTheme = {
     opaque: colorStyles.separators.opaque,
     non_opaque: colorStyles.separators.non_opaque,
   },
+  materials: {
+    regular: colorStyles.materials.regular,
+  },
 };
 
 export const darkTheme = {
@@ -111,6 +120,9 @@ export const darkTheme = {
   separators: {
     opaque: colorStyles.separators.opaque_dark,
     non_opaque: colorStyles.separators.non_opaque_dark,
+  },
+  materials: {
+    regular: colorStyles.materials.regular_dark,
   },
 };
 

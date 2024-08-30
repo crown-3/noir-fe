@@ -7,6 +7,9 @@ import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
 import CTAButton from "src/components/ctaButton/CTAButton";
+import FloatingSheet, {
+  FloatingSheetWrapper,
+} from "src/components/floatingSheet/FloatingSheet";
 import Header from "src/components/header/Header";
 import LinkButton from "src/components/linkButton/LinkButton";
 import ListFooter from "src/components/list/footer/ListFooter";
@@ -127,6 +130,10 @@ const SignUpPage = () => {
           <LinkButton>{t("pages.signUp.alreadyHaveAccount")}</LinkButton>
         </Content>
       </Area>
+
+      <FloatingSheetWrapper>
+        <FloatingSheet>asdf</FloatingSheet>
+      </FloatingSheetWrapper>
     </>
   );
 };
