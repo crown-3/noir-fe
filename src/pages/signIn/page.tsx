@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,8 @@ import ListInput from "src/components/list/input/Input";
 import ListWrapper from "src/components/list/wrapper/ListWrapper";
 import Paths from "src/constants/paths";
 import useDarkMode from "src/hooks/useDarkMode";
+
+import SigninLoadingHandler from "./SigninLoadingHandler";
 
 export interface SigninFormData {
   email: string;
@@ -35,6 +38,19 @@ const SignInPage = () => {
 
   const signinMutation = useMutation({
     mutationFn: signin,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        setError("email", {
+          type: "manual",
+          message: t("pages.signIn.errorMessages.userDontExist"),
+        });
+      } else {
+        console.error(error);
+      }
+    },
   });
 
   const onSubmit: SubmitHandler<SigninFormData> = (data) => {
@@ -94,6 +110,8 @@ const SignInPage = () => {
           </LinkButton>
         </Content>
       </Area>
+
+      <SigninLoadingHandler signinMutation={signinMutation} />
     </>
   );
 };

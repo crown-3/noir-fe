@@ -53,7 +53,6 @@ const SignUpPage = () => {
     mutationFn: signup,
     onSuccess: (_, variables) => {
       const { nickname, ...signinFormData } = variables;
-      console.log(variables);
 
       signinMutation.mutate(signinFormData);
     },
