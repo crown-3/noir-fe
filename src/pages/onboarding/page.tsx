@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
 import CTAButton from "src/components/ctaButton/CTAButton";
 import LinkButton from "src/components/linkButton/LinkButton";
+import Paths from "src/constants/paths";
 import useDarkMode from "src/hooks/useDarkMode";
 import styled from "styled-components";
 
@@ -11,6 +13,12 @@ const OnBoardingPage = () => {
   const { isDarkMode } = useDarkMode();
 
   const { t } = useTranslation();
+
+  const navigator = useNavigate();
+
+  const handleSignUpButtonClick = () => {
+    navigator(Paths.SignUp);
+  };
 
   return (
     <>
@@ -20,7 +28,7 @@ const OnBoardingPage = () => {
 
           <Spacer height="25px" />
 
-          <CTAButton $isDarkMode={isDarkMode}>
+          <CTAButton $isDarkMode={isDarkMode} onClick={handleSignUpButtonClick}>
             {t("pages.onboarding.signUp")}
           </CTAButton>
 

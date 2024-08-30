@@ -15,7 +15,7 @@ i18next
   .use(initReactI18next)
   .init({
     resources,
-    lng: "ko-KR",
+    lng: "en-US",
     fallbackLng: {
       "en-US": ["en-US"],
       en: ["en-US"],

@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { FormEvent, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { signup } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
@@ -22,6 +23,9 @@ interface FormData {
 
 const SignUpPage = () => {
   const { isDarkMode } = useDarkMode();
+
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -43,23 +47,23 @@ const SignUpPage = () => {
 
   return (
     <>
-      <Header title="Sign up" />
+      <Header title={t("pages.signUp.title")} />
       <Area as="form" onSubmit={handleSubmit(onSubmit)}>
         <ListWrapper>
-          <ListHeader>Name</ListHeader>
+          <ListHeader>{t("pages.signUp.name")}</ListHeader>
           <Input
             type="text"
-            placeholder="Name"
+            placeholder={t("pages.signUp.nameTextField")}
             $position="single"
             {...register("name", { required: "Name is required" })}
           />
         </ListWrapper>
 
         <ListWrapper>
-          <ListHeader>Email</ListHeader>
+          <ListHeader>{t("pages.signUp.email")}</ListHeader>
           <Input
             type="email"
-            placeholder="example@mail.com"
+            placeholder={t("pages.signUp.emailTextField")}
             $position="single"
             {...register("email", {
               required: "Email is required",
@@ -72,10 +76,10 @@ const SignUpPage = () => {
         </ListWrapper>
 
         <ListWrapper $isPaddingBottomExists>
-          <ListHeader>Password</ListHeader>
+          <ListHeader>{t("pages.signUp.password")}</ListHeader>
           <Input
             type="password"
-            placeholder="Password"
+            placeholder={t("pages.signUp.passwordTextField")}
             $position="first"
             {...register("password", {
               required: "Password is required",
@@ -87,7 +91,7 @@ const SignUpPage = () => {
           />
           <Input
             type="password"
-            placeholder="Password Confirm"
+            placeholder={t("pages.signUp.passwordConfirmTextField")}
             $position="last"
             {...register("passwordConfirm", {
               validate: (value) =>
@@ -99,10 +103,10 @@ const SignUpPage = () => {
         <Content $isNarrow $isCenter>
           <Spacer height="24px" />
           <CTAButton type="submit" $isDarkMode={isDarkMode}>
-            Sign up
+            {t("pages.signUp.signUp")}
           </CTAButton>
           <Spacer height="15px" />
-          <LinkButton>Already have account</LinkButton>
+          <LinkButton>{t("pages.signUp.alreadyHaveAccount")}</LinkButton>
         </Content>
       </Area>
     </>
