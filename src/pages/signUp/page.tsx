@@ -1,4 +1,6 @@
-import { FormEvent, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { FormEvent, SetStateAction, useState } from "react";
+import { signup } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
@@ -10,10 +12,21 @@ import Input from "src/components/list/input/Input";
 import ListWrapper from "src/components/list/wrapper/ListWrapper";
 import useDarkMode from "src/hooks/useDarkMode";
 
+interface FormData {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 const SignUpPage = () => {
   const { isDarkMode } = useDarkMode();
 
-  const [formData, setFormData] = useState({
+  const signupMutation = useMutation({
+    mutationFn: signup,
+  });
+
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     password: "",
@@ -30,9 +43,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 여기에 폼 제출 로직을 추가하세요. 예를 들어:
-    console.log("Form submitted:", formData);
-    // API 호출이나 다른 처리를 수행할 수 있습니다.
+    signupMutation.mutate();
   };
 
   return (
