@@ -28,7 +28,7 @@ const SignupLoadingHandler = ({
 }: SignupLoadingHandlerProps) => {
   const { t } = useTranslation();
 
-  if (signinMutation.status === "pending") {
+  if (signupMutation.status === "pending") {
     return (
       <FloatingSheetWrapper>
         <FloatingSheet>
@@ -46,10 +46,9 @@ const SignupLoadingHandler = ({
         </FloatingSheet>
       </FloatingSheetWrapper>
     );
-  }
-  if (
-    signinMutation.status === "success" &&
-    signupMutation.status === "pending"
+  } else if (
+    signupMutation.status === "success" &&
+    signinMutation.status === "pending"
   ) {
     return (
       <FloatingSheetWrapper>
@@ -68,9 +67,9 @@ const SignupLoadingHandler = ({
         </FloatingSheet>
       </FloatingSheetWrapper>
     );
+  } else {
+    return null;
   }
-
-  return null;
 };
 
 const Description = styled.h5`

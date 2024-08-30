@@ -30,6 +30,8 @@ export const main = {
 
         passwordIsRequred: "Password is required.",
         passwordNotMatch: "The passwords do not match.",
+
+        userAlreadyExists: "User with these name and email already exists.",
       },
 
       loadingMessages: {

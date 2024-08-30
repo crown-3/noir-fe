@@ -1,4 +1,5 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -34,19 +35,39 @@ const SignUpPage = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    setError,
   } = useForm<SignupFormData>();
-
-  const signupMutation = useMutation({
-    mutationFn: signup,
-  });
 
   const signinMutation = useMutation({
     mutationFn: signin,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const signupMutation = useMutation({
+    mutationFn: signup,
+    onSuccess: (_, variables) => {
+      const { nickname, ...signinFormData } = variables;
+      console.log(variables);
+
+      signinMutation.mutate(signinFormData);
+    },
+    onError: (error) => {
+      if (error instanceof AxiosError && error.response?.status === 409) {
+        setError("email", {
+          type: "manual",
+          message: t("pages.signUp.errorMessages.userAlreadyExists"),
+        });
+      } else {
+        console.error(error);
+      }
+    },
   });
 
   const onSubmit: SubmitHandler<SignupFormData> = (data) => {
     const { passwordConfirm: _, ..._formData } = data;
-    const formData = {
+    const { name: __, ...formData } = {
       ..._formData,
       nickname: _formData.name,
     };

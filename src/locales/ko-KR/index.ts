@@ -30,6 +30,8 @@ export const main = {
 
         passwordIsRequred: "비밀번호를 입력해주세요.",
         passwordNotMatch: "비밀번호가 일치하지 않습니다.",
+
+        userAlreadyExists: "이미 존재하는 이름 및 이메일입니다.",
       },
 
       loadingMessages: {
