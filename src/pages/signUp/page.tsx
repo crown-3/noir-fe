@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { FormEvent, SetStateAction, useRef, useState } from "react";
+import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { signup } from "src/api/auth/auth";
@@ -9,6 +9,7 @@ import Spacer from "src/components/containers/Spacer";
 import CTAButton from "src/components/ctaButton/CTAButton";
 import Header from "src/components/header/Header";
 import LinkButton from "src/components/linkButton/LinkButton";
+import ListFooter from "src/components/list/footer/ListFooter";
 import ListHeader from "src/components/list/header/Header";
 import Input from "src/components/list/input/Input";
 import ListWrapper from "src/components/list/wrapper/ListWrapper";
@@ -33,17 +34,22 @@ const SignUpPage = () => {
     watch,
   } = useForm<FormData>();
 
+  const signupMutation = useMutation({
+    mutationFn: signup,
+  });
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
-    // Here you would typically send the data to your backend
+    const { passwordConfirm: _, ..._formData } = data;
+    const formData = {
+      ..._formData,
+      nickname: _formData.name,
+    };
+
+    signupMutation.mutate(formData);
   };
 
   const password = useRef<string>();
   password.current = watch("password", "");
-
-  const signupMutation = useMutation({
-    mutationFn: signup,
-  });
 
   return (
     <>
@@ -55,8 +61,13 @@ const SignUpPage = () => {
             type="text"
             placeholder={t("pages.signUp.nameTextField")}
             $position="single"
-            {...register("name", { required: "Name is required" })}
+            {...register("name", {
+              required: t("pages.signUp.errorMessages.nameIsRequired"),
+            })}
           />
+          {errors.name && (
+            <ListFooter $isErrorText>{errors.name.message}</ListFooter>
+          )}
         </ListWrapper>
 
         <ListWrapper>
@@ -66,13 +77,16 @@ const SignUpPage = () => {
             placeholder={t("pages.signUp.emailTextField")}
             $position="single"
             {...register("email", {
-              required: "Email is required",
+              required: t("pages.signUp.errorMessages.emailIsRequired"),
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
+                message: t("pages.signUp.errorMessages.invalidEmail"),
               },
             })}
           />
+          {errors.email && (
+            <ListFooter $isErrorText>{errors.email.message}</ListFooter>
+          )}
         </ListWrapper>
 
         <ListWrapper $isPaddingBottomExists>
@@ -82,11 +96,7 @@ const SignUpPage = () => {
             placeholder={t("pages.signUp.passwordTextField")}
             $position="first"
             {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 8,
-                message: "Password must have at least 8 characters",
-              },
+              required: t("pages.signUp.errorMessages.passwordIsRequred"),
             })}
           />
           <Input
@@ -95,9 +105,17 @@ const SignUpPage = () => {
             $position="last"
             {...register("passwordConfirm", {
               validate: (value) =>
-                value === password.current || "The passwords do not match",
+                value === password.current ||
+                t("pages.signUp.errorMessages.passwordNotMatch"),
             })}
           />
+          {errors.password ? (
+            <ListFooter $isErrorText>{errors.password.message}</ListFooter>
+          ) : errors.passwordConfirm ? (
+            <ListFooter $isErrorText>
+              {errors.passwordConfirm.message}
+            </ListFooter>
+          ) : null}
         </ListWrapper>
 
         <Content $isNarrow $isCenter>
