@@ -39,5 +39,29 @@ export const main = {
         loggingIn: "로그인 중...",
       },
     },
+
+    signIn: {
+      title: "로그인",
+
+      email: "메일 주소",
+      emailTextField: "example@mail.com",
+
+      password: "비밀번호",
+      passwordTextField: "비밀번호",
+
+      logIn: "로그인",
+      dontHaveAccount: "계정이 없나요?",
+
+      errorMessages: {
+        emailIsRequired: "메일 주소를 입력해주세요.",
+        passwordIsRequred: "비밀번호를 입력해주세요.",
+
+        userDontExist: "존재하지 않는 유저입니다.",
+      },
+
+      loadingMessages: {
+        loggingIn: "로그인 중...",
+      },
+    },
   },
 };

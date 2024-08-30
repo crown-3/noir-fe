@@ -39,5 +39,29 @@ export const main = {
         loggingIn: "Logging In...",
       },
     },
+
+    signIn: {
+      title: "Log in",
+
+      email: "Email",
+      emailTextField: "example@mail.com",
+
+      password: "Password",
+      passwordTextField: "Password",
+
+      logIn: "Log in",
+      dontHaveAccount: "Don't have Account?",
+
+      errorMessages: {
+        emailIsRequired: "Email is required.",
+        passwordIsRequred: "Password is required.",
+
+        userDontExist: "Your Email address or password was incorrect.",
+      },
+
+      loadingMessages: {
+        loggingIn: "로그인 중...",
+      },
+    },
   },
 };

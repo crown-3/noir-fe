@@ -3,6 +3,7 @@ import { AxiosError } from "axios";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { signin, signup } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
@@ -14,6 +15,7 @@ import ListFooter from "src/components/list/footer/ListFooter";
 import ListHeader from "src/components/list/header/Header";
 import Input from "src/components/list/input/Input";
 import ListWrapper from "src/components/list/wrapper/ListWrapper";
+import Paths from "src/constants/paths";
 import useDarkMode from "src/hooks/useDarkMode";
 
 import SignupLoadingHandler from "./SignupLoadingHandler";
@@ -27,16 +29,18 @@ export interface SignupFormData {
 
 const SignUpPage = () => {
   const { isDarkMode } = useDarkMode();
-
   const { t } = useTranslation();
+  const navigator = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     watch,
     setError,
-  } = useForm<SignupFormData>();
+  } = useForm<SignupFormData>({
+    mode: "onChange",
+  });
 
   const signinMutation = useMutation({
     mutationFn: signin,
@@ -147,11 +151,17 @@ const SignUpPage = () => {
 
         <Content $isNarrow $isCenter>
           <Spacer height="24px" />
-          <CTAButton type="submit" $isDarkMode={isDarkMode}>
+          <CTAButton type="submit" $isDarkMode={isDarkMode} disabled={!isValid}>
             {t("pages.signUp.signUp")}
           </CTAButton>
           <Spacer height="15px" />
-          <LinkButton>{t("pages.signUp.alreadyHaveAccount")}</LinkButton>
+          <LinkButton
+            onClick={() => {
+              navigator(Paths.SignIn);
+            }}
+          >
+            {t("pages.signUp.alreadyHaveAccount")}
+          </LinkButton>
         </Content>
       </Area>
 
