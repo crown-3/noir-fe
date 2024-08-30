@@ -31,6 +31,11 @@ export const main = {
         passwordIsRequred: "비밀번호를 입력해주세요.",
         passwordNotMatch: "비밀번호가 일치하지 않습니다.",
       },
+
+      loadingMessages: {
+        signingIn: "회원가입 중...",
+        loggingIn: "로그인 중...",
+      },
     },
   },
 };

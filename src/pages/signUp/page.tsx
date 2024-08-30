@@ -1,15 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { signup } from "src/api/auth/auth";
+import { signin, signup } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
 import CTAButton from "src/components/ctaButton/CTAButton";
-import FloatingSheet, {
-  FloatingSheetWrapper,
-} from "src/components/floatingSheet/FloatingSheet";
 import Header from "src/components/header/Header";
 import LinkButton from "src/components/linkButton/LinkButton";
 import ListFooter from "src/components/list/footer/ListFooter";
@@ -18,7 +15,9 @@ import Input from "src/components/list/input/Input";
 import ListWrapper from "src/components/list/wrapper/ListWrapper";
 import useDarkMode from "src/hooks/useDarkMode";
 
-interface FormData {
+import SignupLoadingHandler from "./SignupLoadingHandler";
+
+export interface SignupFormData {
   name: string;
   email: string;
   password: string;
@@ -35,13 +34,17 @@ const SignUpPage = () => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<FormData>();
+  } = useForm<SignupFormData>();
 
   const signupMutation = useMutation({
     mutationFn: signup,
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const signinMutation = useMutation({
+    mutationFn: signin,
+  });
+
+  const onSubmit: SubmitHandler<SignupFormData> = (data) => {
     const { passwordConfirm: _, ..._formData } = data;
     const formData = {
       ..._formData,
@@ -131,9 +134,10 @@ const SignUpPage = () => {
         </Content>
       </Area>
 
-      <FloatingSheetWrapper>
-        <FloatingSheet>asdf</FloatingSheet>
-      </FloatingSheetWrapper>
+      <SignupLoadingHandler
+        signinMutation={signinMutation}
+        signupMutation={signupMutation}
+      />
     </>
   );
 };

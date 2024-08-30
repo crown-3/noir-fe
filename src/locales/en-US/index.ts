@@ -31,6 +31,11 @@ export const main = {
         passwordIsRequred: "Password is required.",
         passwordNotMatch: "The passwords do not match.",
       },
+
+      loadingMessages: {
+        signingIn: "Signing In...",
+        loggingIn: "Logging In...",
+      },
     },
   },
 };
