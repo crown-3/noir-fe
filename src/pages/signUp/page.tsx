@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { FormEvent, SetStateAction, useState } from "react";
+import { FormEvent, SetStateAction, useRef, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { signup } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
@@ -21,44 +22,36 @@ interface FormData {
 
 const SignUpPage = () => {
   const { isDarkMode } = useDarkMode();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<FormData>();
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    console.log(data);
+    // Here you would typically send the data to your backend
+  };
+
+  const password = useRef<string>();
+  password.current = watch("password", "");
 
   const signupMutation = useMutation({
     mutationFn: signup,
   });
 
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    signupMutation.mutate();
-  };
-
   return (
     <>
       <Header title="Sign up" />
-      <Area as="form" onSubmit={handleSubmit}>
+      <Area as="form" onSubmit={handleSubmit(onSubmit)}>
         <ListWrapper>
           <ListHeader>Name</ListHeader>
           <Input
             type="text"
             placeholder="Name"
             $position="single"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+            {...register("name", { required: "Name is required" })}
           />
         </ListWrapper>
 
@@ -68,9 +61,13 @@ const SignUpPage = () => {
             type="email"
             placeholder="example@mail.com"
             $position="single"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
+              },
+            })}
           />
         </ListWrapper>
 
@@ -80,17 +77,22 @@ const SignUpPage = () => {
             type="password"
             placeholder="Password"
             $position="first"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must have at least 8 characters",
+              },
+            })}
           />
           <Input
             type="password"
             placeholder="Password Confirm"
             $position="last"
-            name="passwordConfirm"
-            value={formData.passwordConfirm}
-            onChange={handleInputChange}
+            {...register("passwordConfirm", {
+              validate: (value) =>
+                value === password.current || "The passwords do not match",
+            })}
           />
         </ListWrapper>
 
