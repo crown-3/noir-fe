@@ -60,7 +60,7 @@ export const main = {
       },
 
       loadingMessages: {
-        loggingIn: "로그인 중...",
+        loggingIn: "Logging in...",
       },
     },
   },

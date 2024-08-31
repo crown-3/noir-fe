@@ -45,7 +45,7 @@ const SignupLoadingHandler = ({
 };
 
 const Description = styled.h5`
-  color: ${(p) => p.theme.labels.primary};
+  color: ${(p) => p.theme.grays.white};
 `;
 
 export default SignupLoadingHandler;

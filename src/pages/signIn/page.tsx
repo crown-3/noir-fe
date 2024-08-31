@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { signin } from "src/api/auth/auth";
+import { setTokens, signin } from "src/api/auth/auth";
 import Area from "src/components/containers/Area";
 import Content from "src/components/containers/Content";
 import Spacer from "src/components/containers/Spacer";
@@ -39,7 +39,8 @@ const SignInPage = () => {
   const signinMutation = useMutation({
     mutationFn: signin,
     onSuccess: (data) => {
-      console.log(data);
+      setTokens(data);
+      navigator(Paths.Home);
     },
     onError: (error) => {
       if (error instanceof AxiosError && error.response?.status === 404) {
